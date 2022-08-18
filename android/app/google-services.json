@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "625069713034",
+    "project_id": "karbon-ayak-izi-30b69",
+    "storage_bucket": "karbon-ayak-izi-30b69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625069713034:android:ad3d8a847881fe8231af73",
+        "android_client_info": {
+          "package_name": "com.example.karbon_ayak_izi_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625069713034-fu9rnel64351e48r4taevl1pnqkal186.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX-93bdm93Eme0qreTUFyPwCP4Jr0uu0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625069713034-fu9rnel64351e48r4taevl1pnqkal186.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
