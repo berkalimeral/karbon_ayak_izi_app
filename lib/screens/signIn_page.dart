@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/model/user_model.dart';
 import 'package:karbon_ayak_izi_app/screens/home_page.dart';
 import 'package:karbon_ayak_izi_app/screens/signUp_page.dart';
+import 'package:karbon_ayak_izi_app/viewmodel/login_viewmodel.dart';
 import 'package:karbon_ayak_izi_app/widgets/my_text_fields.dart';
+import 'package:provider/provider.dart';
 
 import '../services/firebase_authenticate.dart';
 
@@ -18,6 +20,8 @@ class _LoginPageState extends State<LoginPage> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
 
+  late final LoginViewModel loginViewModel;
+
   FireStoreUtils services = FireStoreUtils();
 
   @override
@@ -25,6 +29,8 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
+    loginViewModel = LoginViewModel();
+
     services.auth.authStateChanges().listen((User? user) {
       if (user == null) {
         debugPrint('User is currently signed out!');
@@ -44,50 +50,56 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        body: Stack(
-          children: [
-            const BackGroundWidget(),
-            SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Sign In',
-                      style: Theme.of(context).textTheme.headline5,
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    TextFieldEmail(
-                      text: 'E-mail',
-                      controller: _emailController,
-                      icon: Icons.email,
-                      inputType: TextInputType.emailAddress,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    TextFieldPassword(
-                      text: 'Password',
-                      controller: _passwordController,
-                      icon: Icons.lock,
-                      suffixIcon: const Icon(Icons.visibility_off),
-                      isVisible: true,
-                    ),
-                    buildLoginBtn(),
-                    buildSignUpBtn(),
-                  ],
-                ),
+    var data = 'Sign In';
+    return ChangeNotifierProvider.value(
+      value: loginViewModel,
+      builder: (context, child) {
+        return bodyView(data, context);
+      },
+    );
+  }
+
+  Scaffold bodyView(String data, BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          const BackGroundWidget(),
+          SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    data,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  TextFieldEmail(
+                    text: 'E-mail',
+                    controller: _emailController,
+                    icon: Icons.email,
+                    inputType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFieldPassword(
+                    text: 'Password',
+                    controller: _passwordController,
+                    icon: Icons.lock,
+                    suffixIcon: const Icon(Icons.visibility_off),
+                    isVisible: true,
+                  ),
+                  buildLoginBtn(),
+                  buildSignUpBtn(),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -154,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Colors.black26, blurRadius: 6, offset: Offset(0, 2)),
               ]),
           child: TextFormField(
-            obscureText: isVisible,
+            obscureText: context.watch<LoginViewModel>().isVisible,
             controller: controller,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(
@@ -163,8 +175,8 @@ class _LoginPageState extends State<LoginPage> {
                 icon: suffixIcon,
                 onPressed: () {
                   setState(() {
-                    isVisible = !isVisible;
-                    print(isVisible.toString());
+                    context.read<LoginViewModel>().isVisibleChange();
+                    // loginViewModel.isVisibleChange();
                   });
                 },
               ),
@@ -182,6 +194,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildLoginBtn() {
+    const data = 'LOGİN';
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
@@ -208,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
           primary: Colors.white,
         ),
         child: const Text(
-          'LOGİN',
+          data,
           style: TextStyle(
               color: Color(0xff5ac18e),
               fontSize: 18,
@@ -219,6 +232,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildSignUpBtn() {
+    var text2 = 'Don\'t have an Account? ';
+    var text3 = 'Sign Up';
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -228,48 +243,23 @@ class _LoginPageState extends State<LoginPage> {
             ));
       },
       child: RichText(
-        text: const TextSpan(
+        text: TextSpan(
           children: [
             TextSpan(
-              text: 'Don\'t have an Account? ',
-              style: TextStyle(
+              text: text2,
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   fontWeight: FontWeight.w500),
             ),
             TextSpan(
-                text: 'Sign Up',
-                style: TextStyle(
+                text: text3,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.bold)),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class BackGroundWidget extends StatelessWidget {
-  const BackGroundWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0x665ac18e),
-              Color(0x995ac18e),
-              Color(0xcc5ac18e),
-              Color(0xff5ac18e),
-            ]),
       ),
     );
   }
