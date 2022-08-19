@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/screens/home_page.dart';
 import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
 import 'package:karbon_ayak_izi_app/services/user_services.dart';
 import 'package:karbon_ayak_izi_app/widgets/my_text_fields.dart';

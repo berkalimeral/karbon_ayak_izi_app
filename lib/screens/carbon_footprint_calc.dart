@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
-
-import 'package:karbon_ayak_izi_app/model/question_answers_model.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_eight.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_five.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_four.dart';
@@ -22,7 +20,6 @@ class CarbonFootprintForm extends StatefulWidget {
 }
 
 class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
-  List<QuestionsModel> questions = <QuestionsModel>[];
   late PageController controller;
   int slideIndex = 0;
 
@@ -30,7 +27,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
   void initState() {
     super.initState();
     controller = PageController();
-    questions = getQuestions();
   }
 
   Widget _buildPageIndicator(bool isCurrentPage) {
@@ -47,18 +43,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
 
   @override
   Widget build(BuildContext context) {
-    final newValues = Values(
-        id: '0',
-        isinma: 0,
-        elektrik: 0,
-        araba: 0,
-        arac: 0,
-        yemek: 0,
-        atik: 0,
-        ic_ucus: 0,
-        dis_ucus: 0,
-        kargo: 0,
-        kagit: 0);
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -84,7 +68,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
                 const IntroPage(),
                 QuestionOne(
                   index: slideIndex,
-                  values: newValues,
                 ),
                 QuestionTwo(index: slideIndex),
                 QuestionThree(index: slideIndex),

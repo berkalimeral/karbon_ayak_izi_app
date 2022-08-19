@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/widgets/dropdown_widget.dart';
 import 'package:karbon_ayak_izi_app/widgets/kaydet_buton_widget.dart';
 
 import '../constants/dummyTexts.dart';
@@ -17,7 +16,23 @@ class QuestionTwo extends StatefulWidget {
 }
 
 class _QuestionTwoState extends State<QuestionTwo> {
-  TextEditingController controller = TextEditingController();
+  late final TextEditingController controller;
+
+
+  final double elektrikKatsayi = 0.1;
+  double result = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +67,9 @@ class _QuestionTwoState extends State<QuestionTwo> {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      result = elektrikKatsayi * double.parse(controller.text);
+                    },
                     child: KaydetButon(),
                   ),
                 ],

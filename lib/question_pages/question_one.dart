@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
+import 'package:karbon_ayak_izi_app/model/question_model.dart';
 import 'package:karbon_ayak_izi_app/widgets/dropdown_widget.dart';
 import 'package:karbon_ayak_izi_app/widgets/question_page_widget.dart';
 
@@ -8,11 +10,9 @@ import '../constants/dummyTexts.dart';
 import '../widgets/kaydet_buton_widget.dart';
 
 class QuestionOne extends StatefulWidget {
-  Values values;
   int index;
   QuestionOne({
     Key? key,
-    required this.values,
     required this.index,
   }) : super(key: key);
 
@@ -28,7 +28,10 @@ class _QuestionOneState extends State<QuestionOne> {
 
   @override
   Widget build(BuildContext context) {
+    questionModelOku();
     TextEditingController controller = TextEditingController();
+    var hintText2 = 'Yıllık tüketilen miktarı giriniz';
+    var data = "Hangi ısınma yöntemini kullanıyorsunuz?";
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -42,7 +45,7 @@ class _QuestionOneState extends State<QuestionOne> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text("Hangi ısınma yöntemini kullanıyorsunuz?",
+                  Text(data,
                       style: Theme.of(context)
                           .textTheme
                           .headline6!
@@ -54,7 +57,7 @@ class _QuestionOneState extends State<QuestionOne> {
                       controller: controller,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        hintText: 'Yıllık tüketilen miktarı giriniz',
+                        hintText: hintText2,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(13),
                         ),
@@ -66,7 +69,6 @@ class _QuestionOneState extends State<QuestionOne> {
                       if (selectedValue == 'dogalgaz') {
                         result =
                             dogalgaz_katsayi * double.parse(controller.text);
-                            widget.values.isinma = double.parse(controller.text);
                         debugPrint(result.toString());
                       } else if (selectedValue == 'komur') {
                         result = komur_katsayi * double.parse(controller.text);
@@ -91,5 +93,18 @@ class _QuestionOneState extends State<QuestionOne> {
         ),
       ],
     );
+  }
+
+  Future<List<QuestionModel>> questionModelOku() async {
+    String okunanString = await DefaultAssetBundle.of(context)
+        .loadString('assets/data/question_answers_model.json');
+    var jsonObje = jsonDecode(okunanString);
+    List<QuestionModel> questionList = (jsonObje as List)
+        .map((questions) => QuestionModel.fromMap(questions))
+        .toList();
+    debugPrint(
+        questionList[0].questionOne[3]["katsayi"][0]["dogalgaz"].toString());
+
+    return questionList;
   }
 }

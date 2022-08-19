@@ -21,7 +21,7 @@ class _QuestionFourState extends State<QuestionFour> {
   TextEditingController controller = TextEditingController();
 
   final double otobus_katsayi = 0.09;
-  final double tren_katsayi = 011;
+  final double tren_katsayi = 0.11;
   final double metro_katsayi = 0.09;
   final double vapur_katsayi = 0.47;
   double result = 0;

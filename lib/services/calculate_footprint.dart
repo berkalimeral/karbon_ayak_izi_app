@@ -1,3 +1,3 @@
-class CalculateFootprint{
-  
+class CalculateFootprint {
+  List<double> finalResult = <double>[];
 }

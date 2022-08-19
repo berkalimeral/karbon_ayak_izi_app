@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class KaydetButon extends StatelessWidget {
-  const KaydetButon({
+  KaydetButon({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var data = 'KAYDET';
     return Container(
       alignment: Alignment.center,
       height: MediaQuery.of(context).size.height / 30,
@@ -16,7 +17,7 @@ class KaydetButon extends StatelessWidget {
         borderRadius: BorderRadius.circular(13),
       ),
       child: Text(
-        'KAYDET',
+        data,
         style: Theme.of(context).textTheme.headline6,
       ),
     );
