@@ -1,5 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:karbon_ayak_izi_app/viewmodel/login_viewmodel.dart';
+import 'package:provider/provider.dart';
 
 class TextFieldEmail extends StatefulWidget {
   String text;
@@ -54,14 +56,12 @@ class TextFieldPassword extends StatefulWidget {
   TextEditingController controller;
   IconData icon;
   Widget suffixIcon;
-  bool isVisible;
   TextFieldPassword({
     Key? key,
     required this.text,
     required this.controller,
     required this.icon,
     required this.suffixIcon,
-    required this.isVisible,
   }) : super(key: key);
 
   @override
@@ -69,31 +69,44 @@ class TextFieldPassword extends StatefulWidget {
 }
 
 class _TextFieldPassword extends State<TextFieldPassword> {
+  late final LoginViewModel loginViewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    loginViewModel = LoginViewModel();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.text,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        TextFormField(
-          autovalidateMode: AutovalidateMode.onUserInteraction,
-          validator: (value) {
-            if (value!.length < 4) {
-              return 'Password en az 4 karakter olmalıdır!';
-            }
-          },
-          obscureText: widget.isVisible,
-          controller: widget.controller,
-          keyboardType: TextInputType.emailAddress,
-          decoration: inputDecorationPass(),
-        ),
-      ],
+    return ChangeNotifierProvider.value(
+      value: loginViewModel,
+      builder: (context, child) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.text,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              validator: (value) {
+                if (value!.length < 4) {
+                  return 'Password en az 4 karakter olmalıdır!';
+                }
+              },
+              obscureText: context.watch<LoginViewModel>().isVisible,
+              controller: widget.controller,
+              keyboardType: TextInputType.emailAddress,
+              decoration: inputDecorationPass(),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -107,11 +120,14 @@ class _TextFieldPassword extends State<TextFieldPassword> {
             width: 3, color: Colors.black26, style: BorderStyle.solid),
       ),
       suffixIcon: IconButton(
-        icon:
-            widget.isVisible ? widget.suffixIcon : const Icon(Icons.visibility),
+        icon: loginViewModel.isVisible
+            ? widget.suffixIcon
+            : const Icon(Icons.visibility),
         onPressed: () {
           setState(() {
-            widget.isVisible = !widget.isVisible;
+            debugPrint(loginViewModel.isVisible.toString());
+            //context.read<LoginViewModel>().isVisibleChange();
+            loginViewModel.isVisibleChange();
           });
         },
       ),

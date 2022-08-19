@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/model/user_model.dart';
-import 'package:karbon_ayak_izi_app/screens/home_page.dart';
 import 'package:karbon_ayak_izi_app/screens/signUp_page.dart';
 import 'package:karbon_ayak_izi_app/viewmodel/login_viewmodel.dart';
 import 'package:karbon_ayak_izi_app/widgets/my_text_fields.dart';
 import 'package:provider/provider.dart';
 
 import '../services/firebase_authenticate.dart';
+import '../widgets/background_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -91,7 +90,6 @@ class _LoginPageState extends State<LoginPage> {
                     controller: _passwordController,
                     icon: Icons.lock,
                     suffixIcon: const Icon(Icons.visibility_off),
-                    isVisible: true,
                   ),
                   buildLoginBtn(),
                   buildSignUpBtn(),
@@ -101,95 +99,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget buildTextFormEmail(
-      String text, TextEditingController controller, IconData icon) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          text,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2)),
-              ]),
-          child: TextFormField(
-            controller: controller,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              prefixIcon: Icon(
-                icon,
-                color: const Color(0xff5ac18e),
-              ),
-              hintText: text,
-              hintStyle: const TextStyle(color: Colors.black38),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget buildTextFormPassword(String text, TextEditingController controller,
-      IconData icon, Widget suffixIcon) {
-    bool isVisible = false;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          text,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2)),
-              ]),
-          child: TextFormField(
-            obscureText: context.watch<LoginViewModel>().isVisible,
-            controller: controller,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              suffixIcon: IconButton(
-                icon: suffixIcon,
-                onPressed: () {
-                  setState(() {
-                    context.read<LoginViewModel>().isVisibleChange();
-                    // loginViewModel.isVisibleChange();
-                  });
-                },
-              ),
-              prefixIcon: Icon(
-                icon,
-                color: const Color(0xff5ac18e),
-              ),
-              hintText: text,
-              hintStyle: const TextStyle(color: Colors.black38),
-            ),
-          ),
-        ),
-      ],
     );
   }
 
