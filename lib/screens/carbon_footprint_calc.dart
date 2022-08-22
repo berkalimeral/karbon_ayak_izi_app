@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:karbon_ayak_izi_app/model/deneme.dart';
 import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_eight.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_five.dart';
@@ -11,6 +14,8 @@ import 'package:karbon_ayak_izi_app/question_pages/question_ten.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_three.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_two.dart';
 import 'package:karbon_ayak_izi_app/screens/result_and_profil_page.dart';
+
+import '../model/question_model.dart';
 
 class CarbonFootprintForm extends StatefulWidget {
   const CarbonFootprintForm({Key? key}) : super(key: key);
@@ -41,6 +46,30 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
     );
   }
 
+  Future<List<QuestionModel>> questionModelOku() async {
+    String okunanString = await DefaultAssetBundle.of(context)
+        .loadString('assets/data/question_answers_model.json');
+    var jsonObje = jsonDecode(okunanString);
+    List<QuestionModel> questionList = (jsonObje as List)
+        .map((questions) => QuestionModel.fromMap(questions))
+        .toList();
+    debugPrint(questionList[0].dropdown[0].questionOne[0].toString());
+
+    return questionList;
+  }
+
+  Future<List<DenemeModel>> denemeOku() async {
+    String okunanString = await DefaultAssetBundle.of(context)
+        .loadString('assets/data/deneme.json');
+    var jsonObje = jsonDecode(okunanString);
+    List<DenemeModel> questionList = (jsonObje as List)
+        .map((questions) => DenemeModel.fromMap(questions))
+        .toList();
+    debugPrint(questionList.length.toString());
+
+    return questionList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,28 +86,32 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
           height: MediaQuery.of(context).size.height - 100,
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: PageView(
+            child: PageView.builder(
+              itemBuilder: (context, index) {
+                var question = [index];
+                return QuestionOne(index: slideIndex);
+              },
               controller: controller,
               onPageChanged: (value) {
                 setState(() {
                   slideIndex = value;
                 });
               },
-              children: [
-                const IntroPage(),
-                QuestionOne(
-                  index: slideIndex,
-                ),
-                QuestionTwo(index: slideIndex),
-                QuestionThree(index: slideIndex),
-                QuestionFour(index: slideIndex),
-                QuestionFive(index: slideIndex),
-                QuestionSix(index: slideIndex),
-                QuestionSeven(index: slideIndex),
-                QuestionEight(index: slideIndex),
-                QuestionNine(index: slideIndex),
-                QuestionTen(index: slideIndex),
-              ],
+              // children: [
+              //   const IntroPage(),
+              //   QuestionOne(
+              //     index: slideIndex,
+              //   ),
+              //   QuestionTwo(index: slideIndex),
+              //   QuestionThree(index: slideIndex),
+              //   QuestionFour(index: slideIndex),
+              //   QuestionFive(index: slideIndex),
+              //   QuestionSix(index: slideIndex),
+              //   QuestionSeven(index: slideIndex),
+              //   QuestionEight(index: slideIndex),
+              //   QuestionNine(index: slideIndex),
+              //   QuestionTen(index: slideIndex),
+              // ],
             ),
           ),
         ),

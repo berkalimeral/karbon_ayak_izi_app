@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
-import 'package:karbon_ayak_izi_app/model/question_model.dart';
+
+import 'package:karbon_ayak_izi_app/model/deneme.dart';
 import 'package:karbon_ayak_izi_app/widgets/dropdown_widget.dart';
 import 'package:karbon_ayak_izi_app/widgets/question_page_widget.dart';
 
@@ -28,7 +28,6 @@ class _QuestionOneState extends State<QuestionOne> {
 
   @override
   Widget build(BuildContext context) {
-    questionModelOku();
     TextEditingController controller = TextEditingController();
     var hintText2 = 'Yıllık tüketilen miktarı giriniz';
     var data = "Hangi ısınma yöntemini kullanıyorsunuz?";
@@ -93,18 +92,5 @@ class _QuestionOneState extends State<QuestionOne> {
         ),
       ],
     );
-  }
-
-  Future<List<QuestionModel>> questionModelOku() async {
-    String okunanString = await DefaultAssetBundle.of(context)
-        .loadString('assets/data/question_answers_model.json');
-    var jsonObje = jsonDecode(okunanString);
-    List<QuestionModel> questionList = (jsonObje as List)
-        .map((questions) => QuestionModel.fromMap(questions))
-        .toList();
-    debugPrint(
-        questionList[0].questionOne[3]["katsayi"][0]["dogalgaz"].toString());
-
-    return questionList;
   }
 }
