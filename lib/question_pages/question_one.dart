@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:karbon_ayak_izi_app/model/deneme.dart';
+import 'package:karbon_ayak_izi_app/model/question_model.dart';
 import 'package:karbon_ayak_izi_app/widgets/dropdown_widget.dart';
 import 'package:karbon_ayak_izi_app/widgets/question_page_widget.dart';
 
@@ -10,9 +10,11 @@ import '../constants/dummyTexts.dart';
 import '../widgets/kaydet_buton_widget.dart';
 
 class QuestionOne extends StatefulWidget {
+  QuestionModel question;
   int index;
   QuestionOne({
     Key? key,
+    required this.question,
     required this.index,
   }) : super(key: key);
 
@@ -29,8 +31,6 @@ class _QuestionOneState extends State<QuestionOne> {
   @override
   Widget build(BuildContext context) {
     TextEditingController controller = TextEditingController();
-    var hintText2 = 'Yıllık tüketilen miktarı giriniz';
-    var data = "Hangi ısınma yöntemini kullanıyorsunuz?";
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -44,7 +44,8 @@ class _QuestionOneState extends State<QuestionOne> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text(data,
+                  Text(widget.question.question!,
+                      textAlign: TextAlign.center,
                       style: Theme.of(context)
                           .textTheme
                           .headline6!
@@ -56,7 +57,7 @@ class _QuestionOneState extends State<QuestionOne> {
                       controller: controller,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        hintText: hintText2,
+                        hintText: widget.question.hintText,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(13),
                         ),
@@ -85,10 +86,10 @@ class _QuestionOneState extends State<QuestionOne> {
             ),
           ),
         ),
-        const Text(
-          isinmaText,
+        Text(
+          widget.question.infoMessage!,
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
         ),
       ],
     );

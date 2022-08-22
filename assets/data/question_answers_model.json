@@ -1,137 +1,72 @@
 [
   {
-    "dropdown" : [
-      {
-        "question_one" : [
-          "Hangi ısınma yöntemini kullanıyorsunuz?",
-          "Isınmak için harcanan fosil yakıtları (doğalgaz ve kömür) azaltmanın en kolay yolu ısı yalıtımı sağlamaktır. Bu sayede karbon ayak izinizi azaltırken kaynak tasarrufu da sağlarsınız.",
-          {
-            "katsayi" : [
-              {
-                "dogalgaz" : 0.19,
-                "komur" : 2,
-                "sivi_yakit" : 2.975
-              }
-            ]
-          }
-        ],
-        "question_three" : [
-          "Otomobiliniz var ise türü ve yakıt cinsini seçiniz. (Yoksa sonraki sayfaya geçiniz.)",
-          "Fosil yakıt kullanımı, ulaşım sırasında önemli miktarda sera gazı salımı meydana gelmesine sebep olmaktadır. Toplu taşımayı, hatta mumkunse bisikleti tercih ederek karbon ayak izinizi küçültebilirsiniz.",
-          {
-            "katsayi" : [
-              {
-                "dizel" : 0.19,
-                "benzin" : 2.0,
-                "elektrik" : 2.975
-              }
-            ]
-          }
-        ],
-        "question_four" : [
-          "Ulaşım için hangi aracı kullanıyorsunuz?",
-          "Fosil yakıt kullanımı, ulaşım sırasında önemli miktarda sera gazı salımı meydana gelmesine sebep olmaktadır. Toplu taşımayı, hatta mumkunse bisikleti tercih ederek karbon ayak izinizi küçültebilirsiniz.",
-          {
-            "katsayi" : [
-              {
-                "otobus" :0.09 ,
-                "tren" :0.11 ,
-                "metro" :0.09 ,
-                "vapur" :0.47 
-              }
-            ]
-          }
-        ]
-      }
-    ],
-
-    "questionText" : [
-      {
-      "question_two" : [
-      "Elektrik tüketim miktarınız ortalama?",
-      "Evde tüketilen elektrik, üretiminde fosil yakıt kullanıldığı için karbon ayak izinizi artırır. Yaşadığınız bölgeye uygun güneş enerjisi paneli var mı diye araştırabilirsiniz. Eğer varsa, yenilenebilir enerjiye geçiş yapmak karbon emisyonlarınızı azaltacaktır.",
-         {
-        "katsayi" : [
-             {
-            "elektrik" : 0.1
-             }
-           ]
-        }
-      ],
-      "question_seven" : [
-        "Geçtiğimiz yıl kişisel amaç ile kaç adet iç hat uçuşu gerçekleştirdiniz?",
-        "Uçuşlar her ne kadar sera gazı emisyonuna sebep olsa da hayatımızın önemli bir parçası. İş, okul ve tatil için hızlı ve pratik imkanlar sunan birçok uçuş aktarmalı olarak gerçekleştirilmektedir. Direkt uçuşları tercih ederek uçuş kaynaklı karbon ayak izinizi en aza indirebilirsiniz.",
-        {
-          "katsayi" : [
-            {
-              "ucus" : 0.1
-            }
-          ]
-        }
-      ],
-      "question_eight" : [
-        "Geçtiğimiz yıl kişisel amaç ile kaç adet dış hat uçuşu gerçekleştirdiniz?",
-        "Uçuşlar her ne kadar sera gazı emisyonuna sebep olsa da hayatımızın önemli bir parçası. İş, okul ve tatil için hızlı ve pratik imkanlar sunan birçok uçuş aktarmalı olarak gerçekleştirilmektedir. Direkt uçuşları tercih ederek uçuş kaynaklı karbon ayak izinizi en aza indirebilirsiniz.",
-        {
-          "katsayi" : [
-            {
-              "ucus" : 0.1
-            }
-          ]
-        }
-      ],
-      "question_nine" : [
-        "Ayda kaç kez kargo hizmeti kullanıyorsunuz? (Getir, Banabi, vb.)",
-        "Kargo hizmetleri her ne kadar hayatımızı kolaylaştırsa da, kullanılan araçlar sera gazı emisyonuna sebep olur. Bu yüzden kargo hizmetlerinin kullanımı daha az yapmaya çalışıp kendimiz alışverişimizi yapmaya çalışmalıyız.",
-        {
-          "katsayi" : [
-            {
-              "kargo" : 0.1
-            }
-          ]
-        }
-      ],
-      "question_ten" : [
-        "Bir yıl içerisinde ortalama kağıt tüketiminiz kaç kilogramdır?",
-        "Dijital yöntemler sayesinde kağıt tüketimini azaltmak hiç olmadığı kadar kolaylaştı. Tüm belgelerinizi çevrimiçi saklayarak doğayı korumaya katkıda bulunabilirsiniz. Ayrıca, kağıt tüketimini azaltmanız daha az atık meydana gelmesini sağlayacaktır.",
-        {
-          "katsayi" : [
-            {
-              "kagit" : 0.1
-            }
-          ]
-        }
-      ]
-     }
-    ],
-    "radioListTile" : [
-      {
-        "question_five" : [
-          "Yemek alışkanlıklarınızı tanımlar mısınız?",
-          "Üretiminde yüksek miktarda karbon emisyonu meydana gelen kırmızı et tüketimini azaltarak karbon ayak izinizi küçültebilirsiniz. Ayrıca, yerel gıdaları tercih ederek tedarik zincirinde daha az emisyon meydana gelen ürünleri tüketebilirsiniz.",
-          {
-            "katsayi" : [
-              {
-                "hergun" : 0.1,
-                "birkac" : 0.1,
-                "hic" : 0.1 
-              }
-            ]
-          }
-        ],
-        "question_six" : [
-          "Atıklarınızı geri dönüştürüyor musunuz? (Plastik, Metaller, Cam, Kağıt ve Karton)",
-          "Etkili bir atık yönetimi ile karbon ayak izinizi küçültebilirsiniz. Atıklarınızı ayrıştırmanız geri dönüşüm sürecini yönetmenizi kolaylaştırır. Etkili bir geri dönüşüm süreci sayesinde çevre kirliliğinin önüne geçmiş olursunuz.",
-          {
-            "katsayi" : [
-              {
-                "yes" : 0.1,
-                "no" : 0.1
-              }
-            ]
-          }
-        ]
-      }
-    ] 
+      "id" : 1,
+      "question" : "Hangi ısınma yöntemini kullanıyorsunuz?",
+      "info_message" : "Isınmak için harcanan fosil yakıtları (doğalgaz ve kömür) azaltmanın en kolay yolu ısı yalıtımı sağlamaktır. Bu sayede karbon ayak izinizi azaltırken kaynak tasarrufu da sağlarsınız.",
+      "hintText" : "Yıllık tüketilen miktarı giriniz",
+      "answer_type" : "dropdown"
+  },
+  {
+      "id" : 2,
+      "question" :  "Elektrik tüketim miktarınız ortalama?",
+      "info_message" :  "Evde tüketilen elektrik, üretiminde fosil yakıt kullanıldığı için karbon ayak izinizi artırır. Yaşadığınız bölgeye uygun güneş enerjisi paneli var mı diye araştırabilirsiniz. Eğer varsa, yenilenebilir enerjiye geçiş yapmak karbon emisyonlarınızı azaltacaktır.",
+      "hintText" : "Yıllık tüketilen miktarı giriniz",
+      "answer_type" : "textfield"
+  },
+  {
+      "id" : 3,
+      "question" : "Otomobiliniz var ise türü ve yakıt cinsini seçiniz. (Yoksa sonraki sayfaya geçiniz.)",
+      "info_message" :  "Fosil yakıt kullanımı, ulaşım sırasında önemli miktarda sera gazı salımı meydana gelmesine sebep olmaktadır. Toplu taşımayı, hatta mumkunse bisikleti tercih ederek karbon ayak izinizi küçültebilirsiniz.",
+      "hintText" : "Yıllık gidilen yol mesafesi (km)",
+      "answer_type" : "dropdown"
+  },
+  {
+      "id" : 4,
+      "question" : "Ulaşım için hangi aracı kullanıyorsunuz?",
+      "info_message" :  "Fosil yakıt kullanımı, ulaşım sırasında önemli miktarda sera gazı salımı meydana gelmesine sebep olmaktadır. Toplu taşımayı, hatta mumkunse bisikleti tercih ederek karbon ayak izinizi küçültebilirsiniz.",
+      "hintText" : "Yıllık gidilen yol mesafesi (km)",
+      "answer_type" : "dropdown"
+  },
+  {
+      "id" : 5,
+      "question" :  "Yemek alışkanlıklarınızı tanımlar mısınız?",
+      "info_message" :  "Üretiminde yüksek miktarda karbon emisyonu meydana gelen kırmızı et tüketimini azaltarak karbon ayak izinizi küçültebilirsiniz. Ayrıca, yerel gıdaları tercih ederek tedarik zincirinde daha az emisyon meydana gelen ürünleri tüketebilirsiniz.",
+      "hintText" : "",
+      "answer_type" : "radioListTile"
+  },
+  {
+      "id" : 6,
+      "question" : "Atıklarınızı geri dönüştürüyor musunuz? (Plastik, Metaller, Cam, Kağıt ve Karton)",
+      "info_message" : "Etkili bir atık yönetimi ile karbon ayak izinizi küçültebilirsiniz. Atıklarınızı ayrıştırmanız geri dönüşüm sürecini yönetmenizi kolaylaştırır. Etkili bir geri dönüşüm süreci sayesinde çevre kirliliğinin önüne geçmiş olursunuz.",
+      "hintText" : "",
+      "answer_type" : "radioListTile"
+  },
+  {
+      "id" : 7,
+      "question" :  "Geçtiğimiz yıl kişisel amaç ile kaç adet iç hat uçuşu gerçekleştirdiniz?",
+      "info_message" : "Uçuşlar her ne kadar sera gazı emisyonuna sebep olsa da hayatımızın önemli bir parçası. İş, okul ve tatil için hızlı ve pratik imkanlar sunan birçok uçuş aktarmalı olarak gerçekleştirilmektedir. Direkt uçuşları tercih ederek uçuş kaynaklı karbon ayak izinizi en aza indirebilirsiniz.",
+      "hintText" : "Gerçekleştirilen uçuş sayısı",
+      "answer_type" : "textfield"
+  },
+  {
+      "id" : 8,
+      "question" : "Geçtiğimiz yıl kişisel amaç ile kaç adet dış hat uçuşu gerçekleştirdiniz?",
+      "info_message" : "Uçuşlar her ne kadar sera gazı emisyonuna sebep olsa da hayatımızın önemli bir parçası. İş, okul ve tatil için hızlı ve pratik imkanlar sunan birçok uçuş aktarmalı olarak gerçekleştirilmektedir. Direkt uçuşları tercih ederek uçuş kaynaklı karbon ayak izinizi en aza indirebilirsiniz.",
+      "hintText" : "Gerçekleştirilen uçuş sayısı",
+      "answer_type" : "textfield"
+  },
+  {
+      "id" : 9,
+      "question" :  "Ayda kaç kez kargo hizmeti kullanıyorsunuz? (Getir, Banabi, vb.)",
+      "info_message" : "Kargo hizmetleri her ne kadar hayatımızı kolaylaştırsa da, kullanılan araçlar sera gazı emisyonuna sebep olur. Bu yüzden kargo hizmetlerinin kullanımı daha az yapmaya çalışıp kendimiz alışverişimizi yapmaya çalışmalıyız.",
+      "hintText" : "Aylık kullanılan miktarı giriniz",
+      "answer_type" : "textfield"
+  },
+  {
+      "id" : 10,
+      "question" : "Bir yıl içerisinde ortalama kağıt tüketiminiz kaç kilogramdır?",
+      "info_message" : "Dijital yöntemler sayesinde kağıt tüketimini azaltmak hiç olmadığı kadar kolaylaştı. Tüm belgelerinizi çevrimiçi saklayarak doğayı korumaya katkıda bulunabilirsiniz. Ayrıca, kağıt tüketimini azaltmanız daha az atık meydana gelmesini sağlayacaktır.",
+      "hintText" : "Yıllık tüketilen miktarı giriniz",
+      "answer_type" : "textfield"
   }
 ]

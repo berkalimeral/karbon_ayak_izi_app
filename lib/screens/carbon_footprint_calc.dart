@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/model/deneme.dart';
 import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_eight.dart';
 import 'package:karbon_ayak_izi_app/question_pages/question_five.dart';
@@ -28,10 +27,13 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
   late PageController controller;
   int slideIndex = 0;
 
+  late Future<List<QuestionModel>> questionFuture;
+
   @override
   void initState() {
     super.initState();
     controller = PageController();
+    questionFuture = questionOku();
   }
 
   Widget _buildPageIndicator(bool isCurrentPage) {
@@ -46,33 +48,28 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
     );
   }
 
-  Future<List<QuestionModel>> questionModelOku() async {
+  Future<List<QuestionModel>> questionOku() async {
     String okunanString = await DefaultAssetBundle.of(context)
         .loadString('assets/data/question_answers_model.json');
-    var jsonObje = jsonDecode(okunanString);
-    List<QuestionModel> questionList = (jsonObje as List)
-        .map((questions) => QuestionModel.fromMap(questions))
-        .toList();
-    debugPrint(questionList[0].dropdown[0].questionOne[0].toString());
+    var jsonObje = json.decode(okunanString);
 
-    return questionList;
+    return jsonObje.map<QuestionModel>(QuestionModel.fromJson).toList();
   }
 
-  Future<List<DenemeModel>> denemeOku() async {
-    String okunanString = await DefaultAssetBundle.of(context)
-        .loadString('assets/data/deneme.json');
-    var jsonObje = jsonDecode(okunanString);
-    List<DenemeModel> questionList = (jsonObje as List)
-        .map((questions) => DenemeModel.fromMap(questions))
-        .toList();
-    debugPrint(questionList.length.toString());
+  // Future<List<DenemeModel>> denemeOku() async {
+  //   String okunanString = await DefaultAssetBundle.of(context)
+  //       .loadString('assets/data/deneme.json');
+  //   var jsonObje = jsonDecode(okunanString);
+  //   List<DenemeModel> questionList = (jsonObje as List)
+  //       .map((questions) => DenemeModel.fromMap(questions))
+  //       .toList();
+  //   debugPrint(questionList.length.toString());
 
-    return questionList;
-  }
+  //   return questionList;
+  // }
 
   @override
   Widget build(BuildContext context) {
-    Future<List<DenemeModel>> questions = denemeOku();
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -87,35 +84,16 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
           height: MediaQuery.of(context).size.height - 100,
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
-            child: PageView.builder(
-              itemCount: 4,
-              itemBuilder: (context, index) {
-                var question = [index];
-                return QuestionOne(
-                  index: slideIndex,
-                );
+            child: FutureBuilder(
+              future: questionOku(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final questions = snapshot.data! as List<QuestionModel>;
+                  return buildPageView(questions);
+                } else {
+                  return const Center(child: CircularProgressIndicator());
+                }
               },
-              controller: controller,
-              onPageChanged: (value) {
-                setState(() {
-                  slideIndex = value;
-                });
-              },
-              // children: [
-              //   const IntroPage(),
-              //   QuestionOne(
-              //     index: slideIndex,
-              //   ),
-              //   QuestionTwo(index: slideIndex),
-              //   QuestionThree(index: slideIndex),
-              //   QuestionFour(index: slideIndex),
-              //   QuestionFive(index: slideIndex),
-              //   QuestionSix(index: slideIndex),
-              //   QuestionSeven(index: slideIndex),
-              //   QuestionEight(index: slideIndex),
-              //   QuestionNine(index: slideIndex),
-              //   QuestionTen(index: slideIndex),
-              // ],
             ),
           ),
         ),
@@ -185,6 +163,37 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
         //     ),
         //   ),
         );
+  }
+
+  PageView buildPageView(List<QuestionModel> questionModel) {
+    return PageView.builder(
+      itemCount: questionModel.length,
+      itemBuilder: (context, index) {
+        final question = questionModel[index];
+        return QuestionOne(index: slideIndex, question: question);
+      },
+      controller: controller,
+      onPageChanged: (value) {
+        setState(() {
+          slideIndex = value;
+        });
+      },
+      // children: [
+      //   const IntroPage(),
+      //   QuestionOne(
+      //     index: slideIndex,
+      //   ),
+      //   QuestionTwo(index: slideIndex),
+      //   QuestionThree(index: slideIndex),
+      //   QuestionFour(index: slideIndex),
+      //   QuestionFive(index: slideIndex),
+      //   QuestionSix(index: slideIndex),
+      //   QuestionSeven(index: slideIndex),
+      //   QuestionEight(index: slideIndex),
+      //   QuestionNine(index: slideIndex),
+      //   QuestionTen(index: slideIndex),
+      // ],
+    );
   }
 }
 
