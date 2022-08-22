@@ -1,12 +1,20 @@
 [
     {
-        "1" : [
-            "Hangi ısınma yöntemini kullanıyorsunuz?"
-        ]
+        "id" : 1,
+        "question" : "Hangi ısınma yöntemini kullanıyorsunuz?",
+        "info_message" : "bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı",
+        "answer_type" : "dropdown"
     },
     {
-        "2" : [
-            "Otomobiliniz var ise türü ve yakıt cinsini seçiniz. (Yoksa sonraki sayfaya geçiniz.)"
-        ]
+        "id" : 2,
+        "question" : "Hangi ısınma yöntemini kullanıyorsunuz?",
+        "info_message" : "bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı",
+        "answer_type" : "dropdown"
+    },
+    {
+        "id" : 2,
+        "question" : "Hangi ısınma yöntemini kullanıyorsunuz?",
+        "info_message" : "bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı bilgilendirme mesajı",
+        "answer_type" : "dropdown"
     }
 ]
