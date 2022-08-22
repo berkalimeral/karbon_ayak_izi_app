@@ -72,6 +72,7 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
 
   @override
   Widget build(BuildContext context) {
+    Future<List<DenemeModel>> questions = denemeOku();
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -87,9 +88,12 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
           child: Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: PageView.builder(
+              itemCount: 4,
               itemBuilder: (context, index) {
                 var question = [index];
-                return QuestionOne(index: slideIndex);
+                return QuestionOne(
+                  index: slideIndex,
+                );
               },
               controller: controller,
               onPageChanged: (value) {
