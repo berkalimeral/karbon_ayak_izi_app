@@ -1,0 +1,30 @@
+[
+    {
+        "questions" : [
+            "Hangi ısınma yöntemini kullanıyorsunuz?",
+            "Otomobiliniz var ise türü ve yakıt cinsini seçiniz. (Yoksa sonraki sayfaya geçiniz.)",
+            "Ulaşım için hangi aracı kullanıyorsunuz?",
+            "Elektrik tüketim miktarınız ortalama?",
+            "Geçtiğimiz yıl kişisel amaç ile kaç adet iç hat uçuşu gerçekleştirdiniz?",
+            "Geçtiğimiz yıl kişisel amaç ile kaç adet dış hat uçuşu gerçekleştirdiniz?",
+            "Ayda kaç kez kargo hizmeti kullanıyorsunuz? (Getir, Banabi, vb.)",
+            "Bir yıl içerisinde ortalama kağıt tüketiminiz kaç kilogramdır?",
+            "Yemek alışkanlıklarınızı tanımlar mısınız?",
+            "Atıklarınızı geri dönüştürüyor musunuz? (Plastik, Metaller, Cam, Kağıt ve Karton)"
+        ]
+    },
+    {
+        "questions" : [
+            "Hangi ısınma yöntemini kullanıyorsunuz?",
+            "Otomobiliniz var ise türü ve yakıt cinsini seçiniz. (Yoksa sonraki sayfaya geçiniz.)",
+            "Ulaşım için hangi aracı kullanıyorsunuz?",
+            "Elektrik tüketim miktarınız ortalama?",
+            "Geçtiğimiz yıl kişisel amaç ile kaç adet iç hat uçuşu gerçekleştirdiniz?",
+            "Geçtiğimiz yıl kişisel amaç ile kaç adet dış hat uçuşu gerçekleştirdiniz?",
+            "Ayda kaç kez kargo hizmeti kullanıyorsunuz? (Getir, Banabi, vb.)",
+            "Bir yıl içerisinde ortalama kağıt tüketiminiz kaç kilogramdır?",
+            "Yemek alışkanlıklarınızı tanımlar mısınız?",
+            "Atıklarınızı geri dönüştürüyor musunuz? (Plastik, Metaller, Cam, Kağıt ve Karton)"
+        ]
+    }
+]
