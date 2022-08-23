@@ -1,20 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/model/footprint_values.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_eight.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_five.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_four.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_nine.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_one.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_seven.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_six.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_ten.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_three.dart';
-import 'package:karbon_ayak_izi_app/question_pages/question_two.dart';
 import 'package:karbon_ayak_izi_app/screens/result_and_profil_page.dart';
 
 import '../model/question_model.dart';
+import '../question_pages/question_one.dart';
 
 class CarbonFootprintForm extends StatefulWidget {
   const CarbonFootprintForm({Key? key}) : super(key: key);
@@ -56,18 +46,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
     return jsonObje.map<QuestionModel>(QuestionModel.fromJson).toList();
   }
 
-  // Future<List<DenemeModel>> denemeOku() async {
-  //   String okunanString = await DefaultAssetBundle.of(context)
-  //       .loadString('assets/data/deneme.json');
-  //   var jsonObje = jsonDecode(okunanString);
-  //   List<DenemeModel> questionList = (jsonObje as List)
-  //       .map((questions) => DenemeModel.fromMap(questions))
-  //       .toList();
-  //   debugPrint(questionList.length.toString());
-
-  //   return questionList;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,56 +75,7 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
             ),
           ),
         ),
-        bottomSheet: Container(
-          margin: const EdgeInsets.symmetric(vertical: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              IconButton(
-                  onPressed: () {
-                    controller.animateToPage(slideIndex - 1,
-                        duration: const Duration(milliseconds: 500),
-                        curve: Curves.linear);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios)),
-              Row(
-                children: [
-                  for (int i = 0; i < 11; i++)
-                    i == slideIndex
-                        ? _buildPageIndicator(true)
-                        : _buildPageIndicator(false),
-                ],
-              ),
-              slideIndex != 10
-                  ? TextButton(
-                      onPressed: () {
-                        controller.animateToPage(slideIndex + 1,
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.linear);
-                      },
-                      child: const Text(
-                        "NEXT",
-                        style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.w600),
-                      ),
-                    )
-                  : TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => ResultProfilePage(),
-                            ));
-                      },
-                      child: const Text(
-                        "FINISH",
-                        style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-            ],
-          ),
-        )
+        bottomSheet: buildBottomSheet(context),
         // : InkWell(
         //     onTap: () {
         //       Navigator.push(context, MaterialPageRoute(builder: (context) => ResultProfilePage(),));
@@ -165,6 +94,59 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
         );
   }
 
+  Container buildBottomSheet(BuildContext context) {
+    return Container(
+        margin: const EdgeInsets.symmetric(vertical: 16),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () {
+                  controller.animateToPage(slideIndex - 1,
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.linear);
+                },
+                icon: const Icon(Icons.arrow_back_ios)),
+            Row(
+              children: [
+                for (int i = 0; i < 11; i++)
+                  i == slideIndex
+                      ? _buildPageIndicator(true)
+                      : _buildPageIndicator(false),
+              ],
+            ),
+            slideIndex != 10
+                ? TextButton(
+                    onPressed: () {
+                      controller.animateToPage(slideIndex + 1,
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.linear);
+                    },
+                    child: const Text(
+                      "NEXT",
+                      style: TextStyle(
+                          color: Colors.green, fontWeight: FontWeight.w600),
+                    ),
+                  )
+                : TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ResultProfilePage(),
+                          ));
+                    },
+                    child: const Text(
+                      "FINISH",
+                      style: TextStyle(
+                          color: Colors.green, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+          ],
+        ),
+      );
+  }
+
   PageView buildPageView(List<QuestionModel> questionModel) {
     return PageView.builder(
       itemCount: questionModel.length,
@@ -178,21 +160,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
           slideIndex = value;
         });
       },
-      // children: [
-      //   const IntroPage(),
-      //   QuestionOne(
-      //     index: slideIndex,
-      //   ),
-      //   QuestionTwo(index: slideIndex),
-      //   QuestionThree(index: slideIndex),
-      //   QuestionFour(index: slideIndex),
-      //   QuestionFive(index: slideIndex),
-      //   QuestionSix(index: slideIndex),
-      //   QuestionSeven(index: slideIndex),
-      //   QuestionEight(index: slideIndex),
-      //   QuestionNine(index: slideIndex),
-      //   QuestionTen(index: slideIndex),
-      // ],
     );
   }
 }
