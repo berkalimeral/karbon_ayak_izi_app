@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:karbon_ayak_izi_app/screens/signIn_page.dart';
+import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
 
 class ResultProfilePage extends StatefulWidget {
   ResultProfilePage({Key? key}) : super(key: key);
@@ -8,14 +11,17 @@ class ResultProfilePage extends StatefulWidget {
 }
 
 class _ResultProfilePageState extends State<ResultProfilePage> {
+  FireStoreUtils services = FireStoreUtils();
+
   @override
   Widget build(BuildContext context) {
+    const data = 'Karbon Ayak İzim';
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
         title: const Text(
-          'Karbon Ayak İzim',
+          data,
           style: TextStyle(color: Colors.black),
         ),
         centerTitle: true,
@@ -40,7 +46,9 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
             ListTile(
               title: const Text('Çıkış Yap'),
               leading: const Icon(Icons.logout),
-              onTap: () {},
+              onTap: () {
+                services.Logout(context);
+              },
             ),
           ],
         ),

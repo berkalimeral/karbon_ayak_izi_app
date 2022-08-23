@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:karbon_ayak_izi_app/screens/signIn_page.dart';
 
 import '../screens/home_page.dart';
 
@@ -60,7 +61,11 @@ class FireStoreUtils {
   void Logout(BuildContext context) async {
     try {
       print("try içi");
-      await auth.signOut();
+      await auth.signOut().then((value) => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const LoginPage(),
+          )));
     } on FirebaseAuthException catch (e) {
       print(e);
     }

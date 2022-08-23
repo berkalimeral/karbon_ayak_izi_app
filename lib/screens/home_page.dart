@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/screens/carbon_footprint_calc.dart';
+import 'package:karbon_ayak_izi_app/screens/signIn_page.dart';
 import 'package:karbon_ayak_izi_app/widgets/on_board_card.dart';
 import 'package:karbon_ayak_izi_app/widgets/tab_indicator_widget.dart';
 import '../model/slider_model.dart';
@@ -45,29 +47,38 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(30.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: PageView.builder(
-                itemCount: OnBoardModel.slides.length,
-                itemBuilder: (context, index) {
-                  return OnBoardCard(slider: OnBoardModel.slides[index]);
-                },
-                controller: controller,
-                onPageChanged: (index) {
-                  _incrementAndChange(index);
-                },
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Scaffold(
+            backgroundColor: Colors.white,
+            body: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: PageView.builder(
+                      itemCount: OnBoardModel.slides.length,
+                      itemBuilder: (context, index) {
+                        return OnBoardCard(slider: OnBoardModel.slides[index]);
+                      },
+                      controller: controller,
+                      onPageChanged: (index) {
+                        _incrementAndChange(index);
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-      bottomSheet:
-          _isLastPage ? buildStartedButton(context) : buildButtomSheet(),
+            bottomSheet:
+                _isLastPage ? buildStartedButton(context) : buildButtomSheet(),
+          );
+        } else {
+          return const LoginPage();
+        }
+      },
     );
   }
 

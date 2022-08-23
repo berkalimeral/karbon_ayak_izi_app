@@ -119,10 +119,12 @@ class _SignUpPageState extends State<SignUpPage> {
         onPressed: () async {
           try {
             if (_passwordController.text == _passwordConfController.text) {
-              usersServices.addUser(_nameController.text,
-                  _mobileController.text, _emailController.text);
+              usersServices.addUser(_nameController.text.trim(),
+                  _mobileController.text.trim(), _emailController.text.trim());
               services.createUserWithEmailAndPassword(
-                  _emailController.text, _passwordController.text, context);
+                  _emailController.text.trim(),
+                  _passwordController.text.trim(),
+                  context);
             }
           } catch (e) {
             debugPrint(e.toString());

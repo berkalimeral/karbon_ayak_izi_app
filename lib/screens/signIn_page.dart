@@ -110,8 +110,8 @@ class _LoginPageState extends State<LoginPage> {
       child: ElevatedButton(
         onPressed: () async {
           try {
-            services.signInWithEmailAndPassword(
-                _emailController.text, _passwordController.text, context);
+            services.signInWithEmailAndPassword(_emailController.text.trim(),
+                _passwordController.text.trim(), context);
 
             if (await FirebaseAuth.instance.currentUser != null) {
               print("current içi");

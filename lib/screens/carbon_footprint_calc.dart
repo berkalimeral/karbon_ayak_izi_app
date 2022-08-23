@@ -48,103 +48,104 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
 
   @override
   Widget build(BuildContext context) {
+    const data = 'Karbon Ayak İzim';
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.white,
-          title: const Text(
-            'Karbon Ayak İzim',
-            style: TextStyle(color: Colors.black),
-          ),
-          centerTitle: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.white,
+        title: const Text(
+          data,
+          style: TextStyle(color: Colors.black),
         ),
-        body: SizedBox(
-          height: MediaQuery.of(context).size.height - 100,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: FutureBuilder(
-              future: questionOku(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final questions = snapshot.data! as List<QuestionModel>;
-                  return buildPageView(questions);
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              },
-            ),
+        centerTitle: true,
+      ),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height - 100,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: FutureBuilder(
+            future: questionOku(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final questions = snapshot.data! as List<QuestionModel>;
+                return buildPageView(questions);
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
           ),
         ),
-        bottomSheet: buildBottomSheet(context),
-        // : InkWell(
-        //     onTap: () {
-        //       Navigator.push(context, MaterialPageRoute(builder: (context) => ResultProfilePage(),));
-        //     },
-        //     child: Container(
-        //       height: 60,
-        //       color: Colors.blue,
-        //       alignment: Alignment.center,
-        //       child: const Text(
-        //         "CONTİNUE",
-        //         style: TextStyle(
-        //             color: Colors.white, fontWeight: FontWeight.w600),
-        //       ),
-        //     ),
-        //   ),
-        );
+      ),
+      bottomSheet: buildBottomSheet(context),
+      // : InkWell(
+      //     onTap: () {
+      //       Navigator.push(context, MaterialPageRoute(builder: (context) => ResultProfilePage(),));
+      //     },
+      //     child: Container(
+      //       height: 60,
+      //       color: Colors.blue,
+      //       alignment: Alignment.center,
+      //       child: const Text(
+      //         "CONTİNUE",
+      //         style: TextStyle(
+      //             color: Colors.white, fontWeight: FontWeight.w600),
+      //       ),
+      //     ),
+      //   ),
+    );
   }
 
   Container buildBottomSheet(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(vertical: 16),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-                onPressed: () {
-                  controller.animateToPage(slideIndex - 1,
-                      duration: const Duration(milliseconds: 500),
-                      curve: Curves.linear);
-                },
-                icon: const Icon(Icons.arrow_back_ios)),
-            Row(
-              children: [
-                for (int i = 0; i < 11; i++)
-                  i == slideIndex
-                      ? _buildPageIndicator(true)
-                      : _buildPageIndicator(false),
-              ],
-            ),
-            slideIndex != 10
-                ? TextButton(
-                    onPressed: () {
-                      controller.animateToPage(slideIndex + 1,
-                          duration: const Duration(milliseconds: 500),
-                          curve: Curves.linear);
-                    },
-                    child: const Text(
-                      "NEXT",
-                      style: TextStyle(
-                          color: Colors.green, fontWeight: FontWeight.w600),
-                    ),
-                  )
-                : TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResultProfilePage(),
-                          ));
-                    },
-                    child: const Text(
-                      "FINISH",
-                      style: TextStyle(
-                          color: Colors.green, fontWeight: FontWeight.w600),
-                    ),
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          IconButton(
+              onPressed: () {
+                controller.animateToPage(slideIndex - 1,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.linear);
+              },
+              icon: const Icon(Icons.arrow_back_ios)),
+          Row(
+            children: [
+              for (int i = 0; i < 10; i++)
+                i == slideIndex
+                    ? _buildPageIndicator(true)
+                    : _buildPageIndicator(false),
+            ],
+          ),
+          slideIndex != 9
+              ? TextButton(
+                  onPressed: () {
+                    controller.animateToPage(slideIndex + 1,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.linear);
+                  },
+                  child: const Text(
+                    "NEXT",
+                    style: TextStyle(
+                        color: Colors.green, fontWeight: FontWeight.w600),
                   ),
-          ],
-        ),
-      );
+                )
+              : TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultProfilePage(),
+                        ));
+                  },
+                  child: const Text(
+                    "FINISH",
+                    style: TextStyle(
+                        color: Colors.green, fontWeight: FontWeight.w600),
+                  ),
+                ),
+        ],
+      ),
+    );
   }
 
   PageView buildPageView(List<QuestionModel> questionModel) {

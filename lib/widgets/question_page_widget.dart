@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/widgets/title_widget.dart';
 
-import '../constants/dummyTexts.dart';
-
 class QuestionsPage extends StatelessWidget {
   int index;
   QuestionsPage({
@@ -12,6 +10,7 @@ class QuestionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(index.toString());
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

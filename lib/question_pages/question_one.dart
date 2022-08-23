@@ -22,7 +22,6 @@ class QuestionOne extends StatefulWidget {
 }
 
 class _QuestionOneState extends State<QuestionOne> {
-  
   double result = 0;
 
   @override
@@ -48,7 +47,7 @@ class _QuestionOneState extends State<QuestionOne> {
                             .textTheme
                             .headline6!
                             .copyWith(color: Colors.black, fontSize: 18)),
-                     DropdownWidget(questionModel: widget.question),
+                    DropdownWidget(questionModel: widget.question),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 13.0),
                       child: TextField(
@@ -68,7 +67,8 @@ class _QuestionOneState extends State<QuestionOne> {
                           result =
                               dogalgaz_katsayi * double.parse(controller.text);
                           debugPrint(result.toString());
-                        } else if (selectedValue == widget.question.items![1].id) {
+                        } else if (selectedValue ==
+                            widget.question.items![1].id) {
                           result =
                               komur_katsayi * double.parse(controller.text);
                           debugPrint(result.toString());
@@ -115,14 +115,14 @@ class _QuestionOneState extends State<QuestionOne> {
                     RadioButtonWidget(questionModel: widget.question),
                     InkWell(
                       onTap: () {
-                      if (answer_yemek == Yemek.hergun) {
-                        result = hergun_katsayi;
-                      } else if (answer_yemek == Yemek.hic) {
-                        result = hic_katsayi;
-                      } else {
-                        result = birkac_katsayi;
-                      }
-                    },
+                        if (answer_yemek == Yemek.hergun) {
+                          result = hergun_katsayi;
+                        } else if (answer_yemek == Yemek.hic) {
+                          result = hic_katsayi;
+                        } else {
+                          result = birkac_katsayi;
+                        }
+                      },
                       child: KaydetButon(),
                     ),
                   ],
@@ -172,8 +172,8 @@ class _QuestionOneState extends State<QuestionOne> {
                     ),
                     InkWell(
                       onTap: () {
-                      result = ucus_katsayi * double.parse(controller.text);
-                    },
+                        result = ucus_katsayi * double.parse(controller.text);
+                      },
                       child: KaydetButon(),
                     ),
                   ],
