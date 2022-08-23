@@ -47,7 +47,7 @@ class _QuestionThreeState extends State<QuestionThree> {
                           .textTheme
                           .headline6!
                           .copyWith(color: Colors.black, fontSize: 18)),
-                  const DropdownWidgetYakit(),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: TextField(

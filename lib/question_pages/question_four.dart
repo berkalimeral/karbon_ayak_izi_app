@@ -46,7 +46,7 @@ class _QuestionFourState extends State<QuestionFour> {
                           .textTheme
                           .headline6!
                           .copyWith(color: Colors.black, fontSize: 18)),
-                  const DropdownWidgetArac(),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 13.0),
                     child: TextField(

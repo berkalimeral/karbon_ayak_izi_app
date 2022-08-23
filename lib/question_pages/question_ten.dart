@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/constants/dummyTexts.dart';
 import 'package:karbon_ayak_izi_app/services/footprint_services.dart';
 
+import '../constants/katsayilar.dart';
 import '../widgets/dropdown_widget.dart';
 import '../widgets/kaydet_buton_widget.dart';
 import '../widgets/question_page_widget.dart';
@@ -22,7 +23,7 @@ class _QuestionTen extends State<QuestionTen> {
 
   FootprintServices footprintServices = FootprintServices();
 
-  final double kagit_katsayi = 0.1;
+  
   double result = 0;
 
   @override

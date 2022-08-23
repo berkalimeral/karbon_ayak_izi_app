@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/constants/dummyTexts.dart';
 import 'package:karbon_ayak_izi_app/widgets/radiobutton_widget.dart';
-
-import '../widgets/dropdown_widget.dart';
 import '../widgets/kaydet_buton_widget.dart';
 import '../widgets/question_page_widget.dart';
 
@@ -45,7 +43,7 @@ class _QuestionFiveState extends State<QuestionFive> {
                           .textTheme
                           .headline6!
                           .copyWith(color: Colors.black, fontSize: 18)),
-                  RadioButtonWidgetYemek(),
+
                   InkWell(
                     onTap: () {
                       if (answer_yemek == Yemek.hergun) {

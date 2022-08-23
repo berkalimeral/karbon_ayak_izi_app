@@ -45,7 +45,7 @@ class _QuestionSixState extends State<QuestionSix> {
                           .textTheme
                           .headline6!
                           .copyWith(color: Colors.black, fontSize: 18)),
-                  RadioButtonWidget(),
+
                   InkWell(
                     onTap: () {
                       if (answer == YesNo.yes) {
