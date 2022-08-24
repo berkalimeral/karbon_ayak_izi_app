@@ -131,10 +131,22 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
                 )
               : TextButton(
                   onPressed: () {
+                    double result = 0;
+                    double calculateResult() {
+                      for (var i = 0; i < finalResult.length; i++) {
+                        result = finalResult[i] + result;
+                      }
+                      return result;
+                    }
+
+                    double newResult = calculateResult();
+
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ResultProfilePage(),
+                          builder: (context) => ResultProfilePage(
+                            result: newResult,
+                          ),
                         ));
                   },
                   child: const Text(
@@ -153,7 +165,11 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
       itemCount: questionModel.length,
       itemBuilder: (context, index) {
         final question = questionModel[index];
-        return QuestionOne(index: slideIndex, question: question,answerIndex: index,);
+        return QuestionOne(
+          index: slideIndex,
+          question: question,
+          answerIndex: index,
+        );
       },
       controller: controller,
       onPageChanged: (value) {

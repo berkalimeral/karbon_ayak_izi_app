@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
 import 'package:provider/provider.dart';
+
+import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
 
 import '../question_pages/question_one.dart';
 import '../viewmodel/login_viewmodel.dart';
 
 class ResultProfilePage extends StatefulWidget {
-  ResultProfilePage({Key? key}) : super(key: key);
+  double result;
+  ResultProfilePage({
+    Key? key,
+    required this.result,
+  }) : super(key: key);
 
   @override
   State<ResultProfilePage> createState() => _ResultProfilePageState();
@@ -19,7 +24,6 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loginViewModel = LoginViewModel();
   }
@@ -98,16 +102,11 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
               .headline4!
               .copyWith(color: Colors.black),
         ),
-        InkWell(
-          onTap: () {
-            loginViewModel.calculateResult();
-          },
-          child: Text(
-            loginViewModel.result!.toStringAsFixed(2),
-            style: Theme.of(context).textTheme.headline5!.copyWith(
-                  color: Colors.black38,
-                ),
-          ),
+        Text(
+          widget.result.toStringAsFixed(2),
+          style: Theme.of(context).textTheme.headline5!.copyWith(
+                color: Colors.black38,
+              ),
         ),
         Text(
           'Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacakTavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak',

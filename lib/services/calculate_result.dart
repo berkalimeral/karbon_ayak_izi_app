@@ -1,11 +1,16 @@
+import 'package:flutter/material.dart';
+
 import '../question_pages/question_one.dart';
 
-class CalculateResult {
-  static double result = 0;
+class MyWidget extends StatelessWidget {
+  double result;
+  MyWidget({
+    Key? key,
+    required this.result,
+  }) : super(key: key);
 
-  void calculateResult() {
-    for (var i = 0; i < finalResult.length; i++) {
-      result = finalResult[i] + result;
-    }
+  @override
+  Widget build(BuildContext context) {
+    return const Center();
   }
 }
