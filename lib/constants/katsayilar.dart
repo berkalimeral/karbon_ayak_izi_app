@@ -20,6 +20,9 @@ const double vapur_katsayi = 0.47;
 const double yes_katsayi = 0.1;
 const double no_katsayi = 0.1;
 
-const double ucus_katsayi = 0.1;
+const double kargo_katsayi = 0.1;
+
+const double ic_ucus_katsayi = 0.1;
+const double dis_ucus_katsayi = 0.1;
 
 const double kagit_katsayi = 0.1;

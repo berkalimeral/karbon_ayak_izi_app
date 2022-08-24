@@ -10,7 +10,6 @@ class QuestionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(index.toString());
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

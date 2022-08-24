@@ -153,7 +153,7 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
       itemCount: questionModel.length,
       itemBuilder: (context, index) {
         final question = questionModel[index];
-        return QuestionOne(index: slideIndex, question: question);
+        return QuestionOne(index: slideIndex, question: question,answerIndex: index,);
       },
       controller: controller,
       onPageChanged: (value) {

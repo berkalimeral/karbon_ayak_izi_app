@@ -8,13 +8,17 @@ import 'package:karbon_ayak_izi_app/widgets/radiobutton_widget.dart';
 import '../constants/katsayilar.dart';
 import '../widgets/kaydet_buton_widget.dart';
 
+List<double> finalResult = <double>[];
+
 class QuestionOne extends StatefulWidget {
   QuestionModel question;
   int index;
+  int answerIndex;
   QuestionOne({
     Key? key,
     required this.question,
     required this.index,
+    required this.answerIndex,
   }) : super(key: key);
 
   @override
@@ -52,7 +56,6 @@ class _QuestionOneState extends State<QuestionOne> {
                       padding: const EdgeInsets.symmetric(horizontal: 13.0),
                       child: TextField(
                         controller: controller,
-                        keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           hintText: widget.question.hintText,
                           border: OutlineInputBorder(
@@ -63,19 +66,66 @@ class _QuestionOneState extends State<QuestionOne> {
                     ),
                     InkWell(
                       onTap: () {
-                        if (selectedValue == widget.question.items![0].id) {
-                          result =
-                              dogalgaz_katsayi * double.parse(controller.text);
-                          debugPrint(result.toString());
-                        } else if (selectedValue ==
-                            widget.question.items![1].id) {
-                          result =
-                              komur_katsayi * double.parse(controller.text);
-                          debugPrint(result.toString());
-                        } else {
-                          result = sivi_yakit_katsayi *
-                              double.parse(controller.text);
-                          debugPrint(result.toString());
+                        switch (widget.question.id) {
+                          case 1:
+                            {
+                              if (selectedValue ==
+                                  widget
+                                      .question.items![widget.answerIndex].id) {
+                                result = dogalgaz_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else if (selectedValue == 'komur') {
+                                result = komur_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else {
+                                result = sivi_yakit_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              }
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 3:
+                            {
+                              if (selectedValueYakit == 'dizel') {
+                                result = dizel_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else if (selectedValueYakit == 'benzin') {
+                                result = benzin_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else {
+                                result = elektrik_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              }
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 4:
+                            {
+                              if (selectedValueArac == 'otobus') {
+                                result = otobus_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else if (selectedValueArac == 'tren') {
+                                result = tren_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else if (selectedValueArac == 'metro') {
+                                result = metro_katsayi *
+                                    double.parse(controller.text);
+                                debugPrint(result.toString());
+                              } else {
+                                result = vapur_katsayi *
+                                    double.parse(controller.text);
+                              }
+                              finalResult.add(result);
+                              debugPrint(finalResult.toString());
+                            }
                         }
                       },
                       child: KaydetButon(),
@@ -115,12 +165,30 @@ class _QuestionOneState extends State<QuestionOne> {
                     RadioButtonWidget(questionModel: widget.question),
                     InkWell(
                       onTap: () {
-                        if (answer_yemek == Yemek.hergun) {
-                          result = hergun_katsayi;
-                        } else if (answer_yemek == Yemek.hic) {
-                          result = hic_katsayi;
-                        } else {
-                          result = birkac_katsayi;
+                        switch (widget.question.id) {
+                          case 5:
+                            {
+                              if (answer_yemek == Yemek.hergun) {
+                                result = hergun_katsayi;
+                              } else if (answer_yemek == Yemek.hic) {
+                                result = hic_katsayi;
+                              } else {
+                                result = birkac_katsayi;
+                              }
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 6:
+                            {
+                              if (answer == YesNo.yes) {
+                                result = yes_katsayi;
+                              } else {
+                                result = no_katsayi;
+                              }
+                              finalResult.add(result);
+                              debugPrint(finalResult.toString());
+                            }
+                            break;
                         }
                       },
                       child: KaydetButon(),
@@ -172,7 +240,45 @@ class _QuestionOneState extends State<QuestionOne> {
                     ),
                     InkWell(
                       onTap: () {
-                        result = ucus_katsayi * double.parse(controller.text);
+                        switch (widget.question.id) {
+                          case 2:
+                            {
+                              result = elektrikKatsayi *
+                                  double.parse(controller.text);
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 7:
+                            {
+                              result = ic_ucus_katsayi *
+                                  double.parse(controller.text);
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 8:
+                            {
+                              result = dis_ucus_katsayi *
+                                  double.parse(controller.text);
+                              finalResult.add(result);
+                            }
+                            break;
+                          case 9:
+                            {
+                              result =
+                                  kargo_katsayi * double.parse(controller.text);
+                              finalResult.add(result);
+                              debugPrint(finalResult.toString());
+                            }
+                            break;
+                          case 10:
+                            {
+                              result =
+                                  kagit_katsayi * double.parse(controller.text);
+                              finalResult.add(result);
+                              debugPrint(finalResult.toString());
+                            }
+                            break;
+                        }
                       },
                       child: KaydetButon(),
                     ),

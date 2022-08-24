@@ -54,16 +54,10 @@ class _DropdownWidgetState extends State<DropdownWidget> {
               selectedValueYakit = value!;
             });
           },
-          items: [
-            DropdownMenuItem(
-                value: widget.questionModel.items![0].id,
-                child: Text(widget.questionModel.items![0].text.toString())),
-            DropdownMenuItem(
-                value: widget.questionModel.items![1].id,
-                child: Text(widget.questionModel.items![1].text.toString())),
-            DropdownMenuItem(
-                value: widget.questionModel.items![2].id,
-                child: Text(widget.questionModel.items![2].text.toString())),
+          items: const [
+            DropdownMenuItem(value: 'dizel', child: Text('Dizel')),
+            DropdownMenuItem(value: 'benzin', child: Text('Benzin')),
+            DropdownMenuItem(value: 'elektrik', child: Text('Elektrik')),
           ],
           isExpanded: true,
         ),
@@ -78,19 +72,11 @@ class _DropdownWidgetState extends State<DropdownWidget> {
               selectedValueArac = value!;
             });
           },
-          items: [
-            DropdownMenuItem(
-                value: widget.questionModel.items![0].id,
-                child: Text(widget.questionModel.items![0].text.toString())),
-            DropdownMenuItem(
-                value: widget.questionModel.items![1].id,
-                child: Text(widget.questionModel.items![1].text.toString())),
-            DropdownMenuItem(
-                value: widget.questionModel.items![2].id,
-                child: Text(widget.questionModel.items![2].text.toString())),
-            DropdownMenuItem(
-                value: widget.questionModel.items![3].id,
-                child: Text(widget.questionModel.items![3].text.toString())),
+          items: const [
+            DropdownMenuItem(value: 'otobus', child: Text('Otobüs')),
+            DropdownMenuItem(value: 'tren', child: Text('Tren')),
+            DropdownMenuItem(value: 'metro', child: Text('Metro')),
+            DropdownMenuItem(value: 'vapur', child: Text('Vapur')),
           ],
           isExpanded: true,
         ),
