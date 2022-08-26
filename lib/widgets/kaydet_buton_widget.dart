@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class KaydetButon extends StatelessWidget {
-  KaydetButon({
+  const KaydetButon({
     Key? key,
   }) : super(key: key);
 

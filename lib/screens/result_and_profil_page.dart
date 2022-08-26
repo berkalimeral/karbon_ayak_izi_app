@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:karbon_ayak_izi_app/screens/users_scores.dart';
 import 'package:provider/provider.dart';
 
 import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
@@ -65,7 +66,13 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
             ListTile(
               title: const Text('Karbon Ayak İzim skorları'),
               leading: const Icon(Icons.equalizer),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>  UserScores(),
+                    ));
+              },
             ),
             ListTile(
               title: const Text('Çıkış Yap'),

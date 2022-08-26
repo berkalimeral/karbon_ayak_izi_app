@@ -2,19 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   String id;
-  String name;
-  String mobileNumber;
+  String full_name;
+  String phone_number;
   String email;
   
   UserModel({
     required this.id,
-    required this.name,
-    required this.mobileNumber,
+    required this.full_name,
+    required this.phone_number,
     required this.email,
   });
 
   factory UserModel.fromSnapshot(DocumentSnapshot snapshot){
-    return UserModel(name: snapshot['name'], mobileNumber: snapshot['mobileNumber'], email: snapshot['email'], id: snapshot.id);
+    return UserModel(full_name: snapshot['full_name'], phone_number: snapshot['mobileNumber'], email: snapshot['email'], id: snapshot.id);
   }
 
 }

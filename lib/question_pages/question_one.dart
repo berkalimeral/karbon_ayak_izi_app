@@ -127,8 +127,16 @@ class _QuestionOneState extends State<QuestionOne> {
                               debugPrint(finalResult.toString());
                             }
                         }
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Cevabınız Kaydedildi'),
+                            backgroundColor: Colors.green,
+                            behavior: SnackBarBehavior.floating,
+                            duration: Duration(milliseconds: 1500),
+                          ),
+                        );
                       },
-                      child: KaydetButon(),
+                      child: const KaydetButon(),
                     ),
                   ],
                 ),
@@ -190,8 +198,16 @@ class _QuestionOneState extends State<QuestionOne> {
                             }
                             break;
                         }
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Cevabınız Kaydedildi'),
+                            backgroundColor: Colors.green,
+                            behavior: SnackBarBehavior.floating,
+                            duration: Duration(milliseconds: 1500),
+                          ),
+                        );
                       },
-                      child: KaydetButon(),
+                      child: const KaydetButon(),
                     ),
                   ],
                 ),
@@ -279,8 +295,16 @@ class _QuestionOneState extends State<QuestionOne> {
                             }
                             break;
                         }
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Cevabınız Kaydedildi'),
+                            backgroundColor: Colors.green,
+                            behavior: SnackBarBehavior.floating,
+                            duration: Duration(milliseconds: 1500),
+                          ),
+                        );
                       },
-                      child: KaydetButon(),
+                      child: const KaydetButon(),
                     ),
                   ],
                 ),
