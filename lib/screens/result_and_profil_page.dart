@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/screens/users_scores.dart';
 import 'package:provider/provider.dart';
 
 import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
 
-import '../question_pages/question_one.dart';
 import '../viewmodel/login_viewmodel.dart';
 
 class ResultProfilePage extends StatefulWidget {
@@ -29,17 +30,8 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
     loginViewModel = LoginViewModel();
   }
 
-  void calculateResult() {
-    double result = 0;
-    for (var i = 0; i < finalResult.length; i++) {
-      result = finalResult[i] + result;
-    }
-    debugPrint(result.toString());
-  }
-
   @override
   Widget build(BuildContext context) {
-    calculateResult();
     const data = 'Karbon Ayak İzim';
     return Scaffold(
       appBar: AppBar(
@@ -70,7 +62,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>  UserScores(),
+                      builder: (context) => UserScores(),
                     ));
               },
             ),
@@ -94,36 +86,72 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
   }
 
   Column buildBody(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(
-          'assets/result_images/doga_resim1.jpg',
-          width: double.infinity,
-          height: MediaQuery.of(context).size.height / 3,
-          fit: BoxFit.cover,
-        ),
-        Text(
-          'Your Score',
-          style: Theme.of(context)
-              .textTheme
-              .headline4!
-              .copyWith(color: Colors.black),
-        ),
-        Text(
-          widget.result.toStringAsFixed(2),
-          style: Theme.of(context).textTheme.headline5!.copyWith(
-                color: Colors.black38,
-              ),
-        ),
-        Text(
-          'Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacakTavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak',
-          textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(color: Colors.black),
-        ),
-      ],
-    );
+    if (widget.result > 4500) {
+      var random = Random().nextInt(2) + 1;
+      return Column(
+        children: [
+          Image.asset(
+            'assets/result_images/kirlilik_resim$random.jpg',
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 3,
+            fit: BoxFit.cover,
+          ),
+          Text(
+            'Your Score',
+            style: Theme.of(context)
+                .textTheme
+                .headline4!
+                .copyWith(color: Colors.black),
+          ),
+          Text(
+            widget.result.toStringAsFixed(2),
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  color: Colors.black38,
+                ),
+          ),
+          Text(
+            'Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacakTavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak',
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: Colors.black),
+          ),
+        ],
+      );
+    } else {
+      var random = Random().nextInt(2) + 1;
+      return Column(
+        children: [
+          Image.asset(
+            'assets/result_images/doga_resim$random.jpg',
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 3,
+            fit: BoxFit.cover,
+          ),
+          Text(
+            'Your Score',
+            style: Theme.of(context)
+                .textTheme
+                .headline4!
+                .copyWith(color: Colors.black),
+          ),
+          Text(
+            widget.result.toStringAsFixed(2),
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  color: Colors.black38,
+                ),
+          ),
+          Text(
+            'Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacakTavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak',
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: Colors.black),
+          ),
+        ],
+      );
+    }
   }
 }
