@@ -27,7 +27,7 @@
       "id" : 2,
       "question" :  "Elektrik tüketim miktarınız ortalama?",
       "info_message" :  "Evde tüketilen elektrik, üretiminde fosil yakıt kullanıldığı için karbon ayak izinizi artırır. Yaşadığınız bölgeye uygun güneş enerjisi paneli var mı diye araştırabilirsiniz. Eğer varsa, yenilenebilir enerjiye geçiş yapmak karbon emisyonlarınızı azaltacaktır.",
-      "hintText" : "Yıllık tüketilen miktarı giriniz",
+      "hintText" : "Yıllık tüketilen miktarı giriniz(kWh)",
       "answer_type" : "textfield",
       "items" : [
         {
@@ -99,17 +99,17 @@
       "items" : [
         {
         "id" : "hergun",
-        "text" : "Hergün",
+        "text" : "Hergün et tüketiyorum",
         "katsayi" : 0.1
         },
         {
           "id" : "birkaç",
-          "text" : "Birkaç",
+          "text" : "Haftada birkaç kez et tüketiyorum",
           "katsayi" : 0.1
           },
           {
             "id" : "hic",
-            "text" : "Hiç",
+            "text" : "Öğünlerimde et tüketmiyorum",
             "katsayi" : 0.1
             }
       ]

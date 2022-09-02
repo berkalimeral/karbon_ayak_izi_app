@@ -5,7 +5,7 @@ class UserModel {
   String full_name;
   String phone_number;
   String email;
-  
+
   UserModel({
     required this.id,
     required this.full_name,
@@ -13,8 +13,11 @@ class UserModel {
     required this.email,
   });
 
-  factory UserModel.fromSnapshot(DocumentSnapshot snapshot){
-    return UserModel(full_name: snapshot['full_name'], phone_number: snapshot['mobileNumber'], email: snapshot['email'], id: snapshot.id);
+  factory UserModel.fromSnapshot(DocumentSnapshot snapshot) {
+    return UserModel(
+        full_name: snapshot['full_name'],
+        phone_number: snapshot['phone_number'],
+        email: snapshot['email'],
+        id: snapshot.id);
   }
-
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:karbon_ayak_izi_app/model/user_score_model.dart';
 import 'package:karbon_ayak_izi_app/screens/signIn_page.dart';
 
 import '../screens/home_page.dart';
@@ -96,5 +97,14 @@ class FireStoreUtils {
     } on FirebaseAuthException catch (e) {
       print(e);
     }
+  }
+
+  Future<List<UserScoreModel>> getUserScore() {
+    return firestore.collection('results').orderBy('scores').get().then(
+        (querySnapshot) => querySnapshot.docs
+            .asMap()
+            .entries
+            .map((entry) => UserScoreModel.fromSnapshot(entry.value))
+            .toList());
   }
 }

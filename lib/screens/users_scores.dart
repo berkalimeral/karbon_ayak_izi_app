@@ -14,10 +14,14 @@ class UserScores extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        // child: SizedBox(
+        //     height: 250, child: CustomBarChart(userChart: UserScoreModel.data)),
         child: FutureBuilder(
           future: userScoreController.scores.value,
           builder: (context, AsyncSnapshot<List<UserScoreModel>> snapshot) {
+            userScoreController.services.getUserScore();
             if (snapshot.hasData) {
+              debugPrint(snapshot.data.toString());
               return Container(
                 height: 250,
                 padding: const EdgeInsets.all(10),
@@ -47,7 +51,7 @@ class CustomBarChart extends StatelessWidget {
       charts.Series(
         id: 'scores',
         data: userChart,
-        domainFn: (series, _) => series.userName.toString(),
+        domainFn: (series, _) => series.userName!,
         measureFn: (series, _) => series.userScore,
         colorFn: (series, _) => series.barColor!,
       )

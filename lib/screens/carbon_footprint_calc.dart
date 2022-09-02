@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/screens/result_and_profil_page.dart';
 import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
@@ -64,9 +65,9 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
         centerTitle: true,
       ),
       body: SizedBox(
-        height: MediaQuery.of(context).size.height - 100,
+        height: MediaQuery.of(context).size.height - 125,
         child: Padding(
-          padding: const EdgeInsets.only(top: 8.0),
+          padding: const EdgeInsets.only(top: 2.5),
           child: FutureBuilder(
             future: questionOku(),
             builder: (context, snapshot) {
@@ -100,6 +101,7 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
   }
 
   Container buildBottomSheet(BuildContext context) {
+    const data = "NEXT";
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 16),
       child: Row(
@@ -128,7 +130,7 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
                         curve: Curves.linear);
                   },
                   child: const Text(
-                    "NEXT",
+                    data,
                     style: TextStyle(
                         color: Colors.green, fontWeight: FontWeight.w600),
                   ),
@@ -144,10 +146,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
                     }
 
                     double newResult = calculateResult();
-
-                    _firestore.collection('users').add({
-                      'user_score' : result, 
-                    });
 
                     Navigator.push(
                         context,
@@ -189,48 +187,11 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
   }
 }
 
-class IntroPage extends StatelessWidget {
-  const IntroPage({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height - 100,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Image.asset(
-              'assets/haberler42218_2.jpg',
-              width: MediaQuery.of(context).size.width - 30,
-              height: MediaQuery.of(context).size.height / 2,
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            const Text(
-              'Karbon Ayak İzi',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 20,
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Text(
-                "Tıpkı bir yere bastığımızda ayak izimizin kalması gibi, üretim, tüketim, seyahat dahil her türlü yaşamsal faaliyetimizle ve kullandığımız ürünlerle ortaya çıkardığımız sera gazlarıyla gezegende bıraktığımız etkidir Karbon Ayak İzi'miz",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                ))
-          ],
-        ),
-      ),
-    );
-  }
-}
+            // const Text(
+            //     "Tıpkı bir yere bastığımızda ayak izimizin kalması gibi, üretim, tüketim, seyahat dahil her türlü yaşamsal faaliyetimizle ve kullandığımız ürünlerle ortaya çıkardığımız sera gazlarıyla gezegende bıraktığımız etkidir Karbon Ayak İzi'miz",
+            //     textAlign: TextAlign.center,
+            //     style: TextStyle(
+            //       fontWeight: FontWeight.w500,
+            //       fontSize: 14,
+            //     ))
