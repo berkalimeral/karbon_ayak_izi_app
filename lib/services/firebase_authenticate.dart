@@ -104,7 +104,7 @@ class FireStoreUtils {
         (querySnapshot) => querySnapshot.docs
             .asMap()
             .entries
-            .map((entry) => UserScoreModel.fromSnapshot(entry.value))
+            .map((entry) => UserScoreModel.fromSnapshot(entry.value, entry.key))
             .toList());
   }
 }

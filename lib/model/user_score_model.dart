@@ -4,19 +4,23 @@ import 'package:flutter/material.dart';
 
 class UserScoreModel {
   String? userName;
-  int? userScore;
+  int? index;
+  double? userScore;
   charts.Color? barColor;
   UserScoreModel({
     required this.userName,
     required this.userScore,
+    required this.index,
     this.barColor,
   }) {
-    barColor = charts.ColorUtil.fromDartColor(Colors.black);
+    barColor = charts.ColorUtil.fromDartColor(Colors.blue);
   }
 
-  factory UserScoreModel.fromSnapshot(DocumentSnapshot snapshot) {
+  factory UserScoreModel.fromSnapshot(DocumentSnapshot snapshot, int index) {
     return UserScoreModel(
-        userName: snapshot['full_name'], userScore: snapshot['scores']);
+        userName: snapshot['full_name'],
+        index: index,
+        userScore: snapshot['scores']);
   }
 
   // static final List<UserScoreModel> data = [

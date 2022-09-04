@@ -30,7 +30,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
 
   addNameAndScore(Map<String, dynamic> data) {
     services.firestore.collection('results').add({
-      'scores': widget.result,
+      'scores': double.parse(widget.result.toString()),
       'full_name': data['full_name'],
     });
   }
