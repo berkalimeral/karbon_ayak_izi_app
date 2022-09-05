@@ -6,7 +6,7 @@ const double hergun_katsayi = 0.1;
 const double birkac_katsayi = 0.1;
 const double hic_katsayi = 0.1;
 
-const double elektrikKatsayi = 8.44;
+const double elektrikKatsayi = 1.44;
 
 const double dizel_katsayi = 3.0;
 const double benzin_katsayi = 2.9;

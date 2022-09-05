@@ -11,12 +11,4 @@ class LoginViewModel extends ChangeNotifier {
     isVisible = !isVisible;
     notifyListeners();
   }
-
-  void calculateResult() {
-    for (var i = 0; i < finalResult.length; i++) {
-      result = finalResult[i] + result!;
-    }
-    debugPrint(result.toString());
-    notifyListeners();
-  }
 }

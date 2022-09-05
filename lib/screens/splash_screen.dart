@@ -24,9 +24,11 @@ class _KarbonSplashScreen extends State<KarbonSplashScreen> {
             .copyWith(color: Colors.white),
       ),
       logo: Image.asset(
-        'assets/splash_image.png',
+        'assets/karbonayak.png',
         fit: BoxFit.contain,
       ),
+      loadingText: Text('Loading',style: Theme.of(context).textTheme.headline6,),
+      logoWidth: 200,
       loaderColor: Colors.black,
       backgroundColor: Colors.green.shade200,
     );

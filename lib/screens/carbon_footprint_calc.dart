@@ -1,11 +1,7 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:karbon_ayak_izi_app/screens/result_and_profil_page.dart';
-import 'package:karbon_ayak_izi_app/services/firebase_authenticate.dart';
-
 import '../model/question_model.dart';
 import '../question_pages/question_one.dart';
 
@@ -21,8 +17,6 @@ class _CarbonFootprintFormState extends State<CarbonFootprintForm> {
   int slideIndex = 0;
 
   late Future<List<QuestionModel>> questionFuture;
-
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {

@@ -56,12 +56,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       drawer: buildDrawer(context),
-      body: ChangeNotifierProvider.value(
-        value: loginViewModel,
-        builder: (context, child) {
-          return buildBody(context);
-        },
-      ),
+      body: buildBody(context),
     );
   }
 
@@ -131,7 +126,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
     String dogaImg = 'assets/result_images/doga_resim';
     var data = 'Your Score';
     var random = Random().nextInt(2) + 1;
-    if (widget.result > 4500) {
+    if (widget.result >= 4500) {
       return buildResultPage(
         random: random,
         data: data,

@@ -135,7 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          primary: Colors.white,
+          backgroundColor: Colors.white,
         ),
         child: Text(
           text,

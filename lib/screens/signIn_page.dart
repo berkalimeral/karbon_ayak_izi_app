@@ -112,12 +112,6 @@ class _LoginPageState extends State<LoginPage> {
           try {
             services.signInWithEmailAndPassword(_emailController.text.trim(),
                 _passwordController.text.trim(), context);
-
-            if (await FirebaseAuth.instance.currentUser != null) {
-              print("current içi");
-            } else {
-              null;
-            }
           } catch (e) {
             debugPrint(e.toString());
           }
@@ -127,7 +121,7 @@ class _LoginPageState extends State<LoginPage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
           ),
-          primary: Colors.white,
+          backgroundColor: Colors.white,
         ),
         child: const Text(
           data,

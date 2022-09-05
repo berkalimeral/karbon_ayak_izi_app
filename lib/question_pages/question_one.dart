@@ -11,7 +11,6 @@ import '../widgets/kaydet_buton_widget.dart';
 List<double> finalResult = <double>[];
 
 class QuestionOne extends StatefulWidget {
-  
   QuestionModel question;
   int index;
   int answerIndex;
@@ -50,7 +49,7 @@ class _QuestionOneState extends State<QuestionOne> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 3.5,
             child: Card(
               elevation: 4,
               child: Column(
@@ -273,12 +272,12 @@ class _QuestionOneState extends State<QuestionOne> {
                         case 3:
                           {
                             if (selectedValueYakit == 'dizel') {
-                              result =
-                                  dizel_katsayi * (double.parse(controller.text) / 14.14);
+                              result = dizel_katsayi *
+                                  (double.parse(controller.text) / 14.14);
                               debugPrint(result.toString());
                             } else if (selectedValueYakit == 'benzin') {
                               result = benzin_katsayi *
-                                 (double.parse(controller.text) / 14.14);
+                                  (double.parse(controller.text) / 14.14);
                               debugPrint(result.toString());
                             } else {
                               result = elektrik_katsayi *

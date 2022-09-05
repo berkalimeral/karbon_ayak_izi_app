@@ -53,29 +53,56 @@ class UserScores extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 311,
-                    child: ListView.separated(
-                      itemCount: snapshot.data!.length,
-                      separatorBuilder: (context, index) =>
-                          const Divider(thickness: 2),
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title:
-                              Text(snapshot.data![index].userName.toString()),
-                          leading: Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
-                              borderRadius: BorderRadius.circular(13),
-                            ),
-                            child: Center(child: Text('#${index + 1}')),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20)),
+                          gradient: LinearGradient(colors: [
+                            Colors.yellow.shade700,
+                            Colors.orange,
+                            Colors.red
+                          ])),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Container(
+                          height: 300,
+                          decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
+                              gradient: LinearGradient(colors: [
+                                Colors.green.shade100,
+                                Colors.green.shade300,
+                                Colors.green.shade500
+                              ])),
+                          child: ListView.separated(
+                            itemCount: snapshot.data!.length,
+                            separatorBuilder: (context, index) =>
+                                const Divider(thickness: 2),
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text(
+                                    snapshot.data![index].userName.toString()),
+                                leading: Container(
+                                  height: 30,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.shade100,
+                                    borderRadius: BorderRadius.circular(13),
+                                  ),
+                                  child: Center(child: Text('#${index + 1}')),
+                                ),
+                                trailing: Text(snapshot.data![index].userScore!
+                                    .toStringAsFixed(2)),
+                              );
+                            },
                           ),
-                          trailing:
-                              Text(snapshot.data![index].userScore.toString()),
-                        );
-                      },
+                        ),
+                      ),
                     ),
                   ),
                 ],
