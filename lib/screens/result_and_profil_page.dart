@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:karbon_ayak_izi_app/constants/dummyTexts.dart';
 import 'package:provider/provider.dart';
 
 import 'package:karbon_ayak_izi_app/screens/users_scores.dart';
@@ -124,9 +125,9 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
   Widget buildBody(BuildContext context) {
     String kirlilikImg = 'assets/result_images/kirlilik_resim';
     String dogaImg = 'assets/result_images/doga_resim';
-    var data = 'Your Score';
+    var data = 'Karbon Ayak İziniz Yılda Toplam';
     var random = Random().nextInt(2) + 1;
-    if (widget.result >= 4500) {
+    if (widget.result >= 5000) {
       return buildResultPage(
         random: random,
         data: data,
@@ -168,22 +169,38 @@ class buildResultPage extends StatelessWidget {
           data,
           style: Theme.of(context)
               .textTheme
-              .headline4!
+              .headline5!
               .copyWith(color: Colors.black),
-        ),
-        Text(
-          widget.result.toStringAsFixed(2),
-          style: Theme.of(context).textTheme.headline5!.copyWith(
-                color: Colors.black38,
-              ),
-        ),
-        Text(
-          'Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacakTavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak Tavsiye mesajları olacak',
           textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(color: Colors.black),
+        ),
+        Container(
+          decoration: BoxDecoration(
+              border: Border.all(
+                  color: widget.result >= 5000
+                      ? Colors.red.shade300
+                      : Colors.green.shade300,
+                  width: 3),
+              borderRadius: BorderRadius.circular(13)),
+          child: Text(
+            '${widget.result.toStringAsFixed(2)} kg Co2',
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  color: Colors.black38,
+                ),
+          ),
+        ),
+        const Divider(),
+        Expanded(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              widget.result >= 5000 ? kotuTavsiyeText : iyiTavsiyeText,
+              textAlign: TextAlign.center,
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6!
+                  .copyWith(color: Colors.black),
+            ),
+          ),
         ),
       ],
     );
