@@ -148,7 +148,7 @@ class _QuestionOneState extends State<QuestionOne> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 3.25,
             child: Card(
               elevation: 4,
               child: Column(
@@ -222,7 +222,7 @@ class _QuestionOneState extends State<QuestionOne> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SizedBox(
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 3.5,
             child: Card(
               elevation: 4,
               child: Column(

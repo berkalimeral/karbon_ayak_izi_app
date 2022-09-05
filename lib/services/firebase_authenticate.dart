@@ -20,7 +20,7 @@ class FireStoreUtils {
         password: password,
       )
           .then((value) {
-        return Navigator.push(
+        return Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const HomePage(),
@@ -62,7 +62,7 @@ class FireStoreUtils {
   void Logout(BuildContext context) async {
     try {
       print("try içi");
-      await auth.signOut().then((value) => Navigator.push(
+      await auth.signOut().then((value) => Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) => const LoginPage(),

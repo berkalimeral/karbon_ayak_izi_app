@@ -112,6 +112,9 @@ class _LoginPageState extends State<LoginPage> {
           try {
             services.signInWithEmailAndPassword(_emailController.text.trim(),
                 _passwordController.text.trim(), context);
+            services.firestore.collection('users').get().then((value) {
+              debugPrint(value.docs.length.toString());
+            });
           } catch (e) {
             debugPrint(e.toString());
           }

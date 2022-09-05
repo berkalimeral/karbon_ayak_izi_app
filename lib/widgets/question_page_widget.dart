@@ -17,13 +17,26 @@ class QuestionsPage extends StatelessWidget {
         height: isCurrentPage ? 30.0 : 6.0,
         width: isCurrentPage ? 30.0 : 6.0,
         decoration: BoxDecoration(
-            color: isCurrentPage ? Colors.grey : Colors.grey[300],
-            borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(colors: [
+          color: isCurrentPage ? Colors.grey : Colors.grey[300],
+          borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(
+            colors: [
               Colors.green.shade100,
               Colors.green.shade200,
               Colors.green.shade300
-            ])),
+            ],
+          ),
+        ),
+        child: isCurrentPage
+            ? Center(
+                child: Text(
+                  '${(index + 1)}',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 10, fontWeight: FontWeight.bold),
+                ),
+              )
+            : null,
       ),
     );
   }
@@ -34,17 +47,11 @@ class QuestionsPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         const TitleWidget(),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           for (int i = 0; i < 10; i++)
-            i == index
-                ? _buildPageIndicator(true)
-                : _buildPageIndicator(false),
+            i == index ? _buildPageIndicator(true) : _buildPageIndicator(false),
         ]),
-        // Text(
-        //   '${(index + 1)}/ 10',
-        //   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        // ),
       ],
     );
   }
