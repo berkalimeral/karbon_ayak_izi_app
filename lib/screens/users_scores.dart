@@ -1,14 +1,47 @@
-import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:karbon_ayak_izi_app/controller/user_score_controller.dart';
+
 import '../model/user_score_model.dart';
+import '../services/firebase_authenticate.dart';
 
-class UserScores extends StatelessWidget {
-  UserScores({Key? key}) : super(key: key);
+class UserScores extends StatefulWidget {
+  Map<String, dynamic> data;
+  double result;
+  UserScores({
+    Key? key,
+    required this.data,
+    required this.result,
+  }) : super(key: key);
 
+  @override
+  State<UserScores> createState() => _UserScoresState();
+}
+
+class _UserScoresState extends State<UserScores> {
   final UserScoreController userScoreController =
       Get.put(UserScoreController());
+
+  FireStoreUtils services = FireStoreUtils();
+
+  final User? user = FirebaseAuth.instance.currentUser;
+
+  addNameAndScore(Map<String, dynamic> data) {
+    services.firestore.doc('results/${user!.uid}').set({
+      'scores': double.parse(widget.result.toString()),
+      'full_name': data['full_name'],
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    addNameAndScore(widget.data);
+  }
 
   @override
   Widget build(BuildContext context) {

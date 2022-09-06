@@ -29,12 +29,18 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
 
   late final LoginViewModel loginViewModel;
 
-  addNameAndScore(Map<String, dynamic> data) {
-    services.firestore.collection('results').add({
-      'scores': double.parse(widget.result.toString()),
-      'full_name': data['full_name'],
-    });
-  }
+  // addNameAndScore(Map<String, dynamic> data) {
+
+  //   final Future<QuerySnapshot> currentUser = services.firestore
+  //       .collection('users')
+  //       .where("email", isEqualTo: user!.email!)
+  //       .get();
+
+  //   services.firestore.collection('results').add({
+  //     'scores': double.parse(widget.result.toString()),
+  //     'full_name': data['full_name'],
+  //   });
+  // }
 
   @override
   void initState() {
@@ -80,7 +86,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
                     Map<String, dynamic> data =
                         document.data()! as Map<String, dynamic>;
                     debugPrint(data['full_name']);
-                    addNameAndScore(data);
+                    // addNameAndScore(data);
                     return Column(children: [
                       UserAccountsDrawerHeader(
                         decoration: const BoxDecoration(
@@ -96,7 +102,7 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => UserScores(),
+                                builder: (context) => UserScores(data: data,result: widget.result),
                               ));
                         },
                       ),
