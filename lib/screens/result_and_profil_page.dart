@@ -29,19 +29,6 @@ class _ResultProfilePageState extends State<ResultProfilePage> {
 
   late final LoginViewModel loginViewModel;
 
-  // addNameAndScore(Map<String, dynamic> data) {
-
-  //   final Future<QuerySnapshot> currentUser = services.firestore
-  //       .collection('users')
-  //       .where("email", isEqualTo: user!.email!)
-  //       .get();
-
-  //   services.firestore.collection('results').add({
-  //     'scores': double.parse(widget.result.toString()),
-  //     'full_name': data['full_name'],
-  //   });
-  // }
-
   @override
   void initState() {
     super.initState();

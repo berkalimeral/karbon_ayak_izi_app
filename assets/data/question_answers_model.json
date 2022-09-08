@@ -3,7 +3,7 @@
       "id" : 1,
       "question" : "Hangi ısınma yöntemini kullanıyorsunuz?",
       "info_message" : "Isınmak için harcanan fosil yakıtları (doğalgaz ve kömür) azaltmanın en kolay yolu ısı yalıtımı sağlamaktır. Bu sayede karbon ayak izinizi azaltırken kaynak tasarrufu da sağlarsınız.",
-      "hintText" : "Yıllık tüketilen miktarı giriniz",
+      "hintText" : "Aylık tüketilen miktarı giriniz",
       "answer_type" : "dropdown",
       "items" : [
         {
@@ -27,7 +27,7 @@
       "id" : 2,
       "question" :  "Elektrik tüketim miktarınız ortalama?",
       "info_message" :  "Evde tüketilen elektrik, üretiminde fosil yakıt kullanıldığı için karbon ayak izinizi artırır. Yaşadığınız bölgeye uygun güneş enerjisi paneli var mı diye araştırabilirsiniz. Eğer varsa, yenilenebilir enerjiye geçiş yapmak karbon emisyonlarınızı azaltacaktır.",
-      "hintText" : "Yıllık tüketilen miktarı giriniz(kWh)",
+      "hintText" : "Aylık tüketilen miktarı giriniz(kWh)",
       "answer_type" : "textfield",
       "items" : [
         {
